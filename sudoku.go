@@ -61,3 +61,27 @@ func (b board) checkColumn(column int, value int) bool {
 
 	return true
 }
+
+func (b board) checkSquare(y int, x int, value int) bool {
+	yCorner := 0
+	xCorner := 0
+	squareSize := 3
+
+	for y >= yCorner+squareSize {
+		yCorner += squareSize
+	}
+
+	for x >= xCorner+squareSize {
+		xCorner += squareSize
+	}
+
+	for i := range b[yCorner : yCorner+squareSize] {
+		for j := range b[i][xCorner : xCorner+squareSize] {
+			if b[i][j] == value {
+				return false
+			}
+		}
+	}
+
+	return true
+}

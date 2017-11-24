@@ -74,3 +74,13 @@ func TestCheckColumn(t *testing.T) {
 		t.Errorf("Expected to find match (false) for 5 in column 0, but got true")
 	}
 }
+
+func TestCheckSquare(t *testing.T) {
+	if parsedBoard.checkSquare(2, 2, 1) != true {
+		t.Errorf("Expected to find no match (true) for 1 in square (2, 2) but got false")
+	}
+
+	if parsedBoard.checkSquare(2, 2, 9) != false {
+		t.Errorf("Expected to find match (false) for 9 in square (2, 2) but got true")
+	}
+}
