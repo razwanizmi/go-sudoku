@@ -85,3 +85,7 @@ func (b board) checkSquare(y int, x int, value int) bool {
 
 	return true
 }
+
+func (b board) checkValue(y int, x int, value int) bool {
+	return b.checkColumn(y, value) && b.checkRow(x, value) && b.checkSquare(y, x, value)
+}

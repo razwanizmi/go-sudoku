@@ -57,30 +57,40 @@ func TestSaveEmptyPositions(t *testing.T) {
 
 func TestCheckRow(t *testing.T) {
 	if parsedBoard.checkRow(0, 2) != true {
-		t.Errorf("Expected to find no match (true) for 2 in row 0, but got false")
+		t.Errorf("Expected value 2 to be valid (true) in row 0, but got false")
 	}
 
 	if parsedBoard.checkRow(0, 9) != false {
-		t.Errorf("Expected to find a match (false) for 9 in row 0, but got true")
+		t.Errorf("Expected value 9 to be invalid (false) in row 0, but got true")
 	}
 }
 
 func TestCheckColumn(t *testing.T) {
 	if parsedBoard.checkColumn(0, 9) != true {
-		t.Errorf("Expected to find no match (true) for 9 in column 0, but got false")
+		t.Errorf("Expected value 9 to be valid (true) in column 0, but got false")
 	}
 
 	if parsedBoard.checkColumn(0, 5) != false {
-		t.Errorf("Expected to find match (false) for 5 in column 0, but got true")
+		t.Errorf("Expected value 5 to be invalid (false) in column 0, but got true")
 	}
 }
 
 func TestCheckSquare(t *testing.T) {
 	if parsedBoard.checkSquare(2, 2, 1) != true {
-		t.Errorf("Expected to find no match (true) for 1 in square (2, 2) but got false")
+		t.Errorf("Expected value 1 to be valid (true) in 3x3 square (2, 2) but got false")
 	}
 
 	if parsedBoard.checkSquare(2, 2, 9) != false {
-		t.Errorf("Expected to find match (false) for 9 in square (2, 2) but got true")
+		t.Errorf("Expected value 9 to be invalid (false) in 3x3 square (2, 2) but got true")
+	}
+}
+
+func TestCheckValue(t *testing.T) {
+	if parsedBoard.checkValue(0, 0, 2) != true {
+		t.Errorf("Expected value 2 to be valid (true) in position (0, 0), but got false")
+	}
+
+	if parsedBoard.checkValue(0, 0, 9) != false {
+		t.Errorf("Expected value 9 to be invalid (false) in position (0, 0), but got true")
 	}
 }
