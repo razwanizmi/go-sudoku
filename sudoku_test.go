@@ -64,3 +64,13 @@ func TestCheckRow(t *testing.T) {
 		t.Errorf("Expected to find a match (false) for 9 in row 0, but got true")
 	}
 }
+
+func TestCheckColumn(t *testing.T) {
+	if parsedBoard.checkColumn(0, 9) != true {
+		t.Errorf("Expected to find no match (true) for 9 in column 0, but got false")
+	}
+
+	if parsedBoard.checkColumn(0, 5) != false {
+		t.Errorf("Expected to find match (false) for 5 in column 0, but got true")
+	}
+}

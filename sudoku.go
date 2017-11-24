@@ -51,3 +51,13 @@ func (b board) checkRow(row int, value int) bool {
 
 	return true
 }
+
+func (b board) checkColumn(column int, value int) bool {
+	for y := range b {
+		if b[y][column] == value {
+			return false
+		}
+	}
+
+	return true
+}
