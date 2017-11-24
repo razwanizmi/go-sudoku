@@ -41,3 +41,13 @@ func (b board) saveEmptyPositions() [][]int {
 
 	return emptyPositions
 }
+
+func (b board) checkRow(row int, value int) bool {
+	for x := range b[row] {
+		if b[row][x] == value {
+			return false
+		}
+	}
+
+	return true
+}

@@ -54,3 +54,13 @@ func TestSaveEmptyPositions(t *testing.T) {
 		t.Errorf("Expected empty positions to be %v but got %v", expectedPositions, positions)
 	}
 }
+
+func TestCheckRow(t *testing.T) {
+	if parsedBoard.checkRow(0, 2) != true {
+		t.Errorf("Expected to find no match (true) for 2 in row 0, but got false")
+	}
+
+	if parsedBoard.checkRow(0, 9) != false {
+		t.Errorf("Expected to find a match (false) for 9 in row 0, but got true")
+	}
+}
