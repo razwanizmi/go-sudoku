@@ -90,95 +90,33 @@ func (b board) checkValue(x int, y int, value int) bool {
 	return b.checkYAxis(x, value) && b.checkXAxis(y, value) && b.checkSubSquare(x, y, value)
 }
 
-// func (b board) saveEmptyPositions() [][]int {
-// 	emptyPositions := [][]int{}
+func (b board) solvePuzzle() board {
+	emptyPositions := b.saveEmptyPositions()
+	limit := 9
+	i := 0
 
-// 	for y := range b {
-// 		for x := range b[y] {
-// 			if b[y][x] == 0 {
-// 				emptyPositions = append(emptyPositions, []int{y, x})
-// 			}
-// 		}
-// 	}
+	for i < len(emptyPositions) {
+		x := emptyPositions[i][0]
+		y := emptyPositions[i][1]
 
-// 	return emptyPositions
-// }
+		value := b[y][x] + 1
+		found := false
 
-// func (b board) checkRow(row int, value int) bool {
-// 	for i := range b[row] {
-// 		if b[row][i] == value {
-// 			return false
-// 		}
-// 	}
+		for !found && value <= limit {
+			if b.checkValue(x, y, value) {
+				b[y][x] = value
+				found = true
+				i++
+			} else {
+				value++
+			}
+		}
 
-// 	return true
-// }
+		if !found {
+			b[y][x] = 0
+			i--
+		}
+	}
 
-// func (b board) checkColumn(column int, value int) bool {
-// 	for i := range b {
-// 		if b[i][column] == value {
-// 			return false
-// 		}
-// 	}
-
-// 	return true
-// }
-
-// func (b board) checkSquare(col int, row int, value int) bool {
-// 	colCorner := 0
-// 	rowCorner := 0
-// 	squareSize := 3
-
-// 	for col >= colCorner+squareSize {
-// 		colCorner += squareSize
-// 	}
-
-// 	for row >= rowCorner+squareSize {
-// 		rowCorner += squareSize
-// 	}
-
-// 	for i := range b[rowCorner : rowCorner+squareSize] {
-// 		for j := range b[i][colCorner : colCorner+squareSize] {
-// 			if b[i][j] == value {
-// 				return false
-// 			}
-// 		}
-// 	}
-
-// 	return true
-// }
-
-// func (b board) checkValue(col int, row int, value int) bool {
-// 	return b.checkColumn(col, value) && b.checkRow(row, value) && b.checkSquare(col, row, value)
-// }
-
-// func (b board) solvePuzzle() board {
-// 	emptyPositions := b.saveEmptyPositions()
-// 	i := 0
-
-// 	for i < len(emptyPositions) {
-// 		limit := 9
-// 		row := emptyPositions[i][0]
-// 		col := emptyPositions[i][1]
-
-// 		value := emptyPositions[row][col] + 1
-// 		found := false
-
-// 		for !found && value <= limit {
-// 			if b.checkValue(col, row, value) {
-// 				b[row][col] = value
-// 				found = true
-// 				i++
-// 			} else {
-// 				value++
-// 			}
-// 		}
-
-// 		if !found {
-// 			b[row][col] = 0
-// 			i--
-// 		}
-// 	}
-
-// 	return b
-// }
+	return b
+}

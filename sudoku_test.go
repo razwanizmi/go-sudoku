@@ -77,39 +77,39 @@ func TestCheckYAxis(t *testing.T) {
 
 func TestCheckSubSquare(t *testing.T) {
 	if parsedBoard.checkSubSquare(2, 2, 1) != true {
-		t.Errorf("Expected value 1 to be valid (true) in sub-square (2, 2) but got false")
+		t.Errorf("Expected value 1 to be valid (true) at sub-square (2, 2) but got false")
 	}
 
 	if parsedBoard.checkSubSquare(2, 2, 9) != false {
-		t.Errorf("Expected value 9 to be invalid (false) in sub-square (2, 2) but got true")
+		t.Errorf("Expected value 9 to be invalid (false) at sub-square (2, 2) but got true")
 	}
 }
 
 func TestCheckValue(t *testing.T) {
 	if parsedBoard.checkValue(0, 0, 2) != true {
-		t.Errorf("Expected value 2 to be valid (true) in position (0, 0), but got false")
+		t.Errorf("Expected value 2 to be valid (true) at position (0, 0), but got false")
 	}
 
 	if parsedBoard.checkValue(0, 0, 9) != false {
-		t.Errorf("Expected value 9 to be invalid (false) in position (0, 0), but got true")
+		t.Errorf("Expected value 9 to be invalid (false) at position (0, 0), but got true")
 	}
 }
 
-// func TestSolvePuzzle(t *testing.T) {
-// 	solution := parsedBoard.solvePuzzle()
-// 	expectedSolution := board{
-// 		{8, 9, 5, 7, 4, 2, 1, 3, 6},
-// 		{2, 7, 1, 9, 6, 3, 4, 8, 5},
-// 		{4, 6, 3, 5, 8, 1, 7, 9, 2},
-// 		{9, 3, 4, 6, 1, 7, 2, 5, 8},
-// 		{5, 1, 7, 2, 3, 8, 9, 6, 4},
-// 		{6, 8, 2, 4, 5, 9, 3, 7, 1},
-// 		{1, 5, 9, 8, 7, 4, 6, 2, 3},
-// 		{7, 4, 6, 3, 2, 5, 8, 1, 9},
-// 		{3, 2, 8, 1, 9, 6, 5, 4, 7},
-// 	}
+func TestSolvePuzzle(t *testing.T) {
+	solution := parsedBoard.solvePuzzle()
+	expectedSolution := board{
+		{8, 9, 5, 7, 4, 2, 1, 3, 6},
+		{2, 7, 1, 9, 6, 3, 4, 8, 5},
+		{4, 6, 3, 5, 8, 1, 7, 9, 2},
+		{9, 3, 4, 6, 1, 7, 2, 5, 8},
+		{5, 1, 7, 2, 3, 8, 9, 6, 4},
+		{6, 8, 2, 4, 5, 9, 3, 7, 1},
+		{1, 5, 9, 8, 7, 4, 6, 2, 3},
+		{7, 4, 6, 3, 2, 5, 8, 1, 9},
+		{3, 2, 8, 1, 9, 6, 5, 4, 7},
+	}
 
-// 	if !reflect.DeepEqual(solution, expectedSolution) {
-// 		t.Errorf("Expected solution to be %v but got %v", expectedSolution, solution)
-// 	}
-// }
+	if !reflect.DeepEqual(solution, expectedSolution) {
+		t.Errorf("Expected solution to be %v but got %v", expectedSolution, solution)
+	}
+}
